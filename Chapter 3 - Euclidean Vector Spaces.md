@@ -101,3 +101,61 @@
 	Let the equations$$\begin{matrix}a_0x + b_0y + c_0z + d_0 = 0 \\ a_1x + b_1y + c_1z + d_1 = 0\end{matrix}$$
 	Describe the two planes. $(-\frac{d_0}{a_0}, 0, 0)$ is the point in plane $0$ at which it crosses the $x\text{-axis}$. The distance between this point and plane $1$ is (via the previous formula & some simplification)$$D = \frac{|d - d_0|}{\sqrt{a_1^2 + b_1^2 + c_1^2}}$$
 	Similar to previous derivations, this leads to a formula for the distance between two parallel lines by taking $c_1 = 0$.
+
+## 3.4 - The Geometry of Linear Systems
+
+## 3.5 - Cross Product
+
+The cross product is defined for vectors $u$ and $v$, both $R^3$, as $u \times v$ which is a vector in $R^3$ orthogonal to both $u$ and $v$.$$u \times v = (u_2v_3 - u_3v_2,\ u_3v_1 - u_1v_3,\ u_1v_2 - u_2v_1)$$
+The above can be obtained analytically using the fact that $w \cdot v = 0$ and $w \cdot u = 0$, where $w = u \times v$. Derivation: https://www.youtube.com/watch?v=BvfcBoFZUkY
+
+- Important properties of the cross product
+	(a) $u \times v = -(v \times u)$
+	(b) $||u \times v||^2 = ||u||^2||v||^2 - (u \cdot v)^2 \text{ [Lagrange's identity]}$
+	(c) $u \times 0 = 0$
+	(d) $u \times u = 0$
+	
+	*See p139 for proofs and additional properties*
+
+- The cross product as a (sort of) determinant
+	Observe that in the definition of the cross product the following is true:$$(u \times v)_1 = (u_2v_3 - u_3v_2) = \begin{vmatrix}u_2 & u_3 \\ v_2 & v_3\end{vmatrix}$$
+	This holds for the other components of $u \times v$ and they are minors of the below matrix:$$\begin{vmatrix}a & b & c \\ u_1 & u_2 & u_3 \\  v_1 & v_2 & v_3\end{vmatrix}$$
+	*$a$, $b$ and $c$ are arbitrary since the relevant minors are all along the first row*
+
+	The full cross product can be thought of as the cofactor expansion along the first row of the following determinant:$$\begin{vmatrix}i & j & k \\ u_1 & u_2 & u_3 \\  v_1 & v_2 & v_3\end{vmatrix}$$
+	Where $\{i, j, k\}$ forms the standard basis for $R^3$.
+
+	Cofactor expansion along the first row produces the following result:$$\begin{vmatrix}u_2 & u_3 \\ v_2 & v_3\end{vmatrix}i - \begin{vmatrix}u_1 & u_3 \\ v_1 & v_3\end{vmatrix}j + \begin{vmatrix}u_1 & u_2 \\ v_1 & v_2\end{vmatrix}k$$
+	Which is equal to the cross product.
+
+	*The use of $i, j, k$ as elements of a determinant doesn't align with the standard properties of determinants and the idea serves as more of a mnemonic than a theorem*
+
+- Norm of the cross product
+	Starting from Lagrange's identity: $$\begin{matrix}||u \times v||^2 = ||u||^2||v||^2 - (u \cdot v)^2\\ = ||u||^2||v||^2 - ||u||^2||v||^2\cos^2\theta \\\text{by the angle definition of the dot product:}\\= ||u||^2||v||^2(1 - \cos^2\theta) = ||u||^2||v||^2\sin^2\theta\\\\\text{so}\\||u \times v||^2 = ||u||^2||v||^2\sin^2\theta\\\text{which implies}\\\sqrt{||u \times v||^2} = \sqrt{||u||^2||v||^2\sin^2\theta}\\= \sqrt{||u||^2}\sqrt{||v||^2}\sqrt{\sin^2\theta}\\\text{and finally,}\\||u \times v|| = ||u||\ ||v||\sin\theta\end{matrix}$$
+	$||v||\sin\theta$ is the height of the parallelogram determined by $u$ and $v$:
+	
+	![[la_image21.png]]
+
+	The area of this parallelogram is equal to its height, $||v||\sin\theta$, multiplied by its base, $||u||$. As was just demonstrated, this product is equal to $||u \times v||$. This is the geometric interpretation of the cross product.
+
+- The scalar triple product
+	For three vectors in $R^3$, their ***scalar triple product*** is defined as:$$\text{scalar triple product} = u \cdot (v \times w) = \begin{vmatrix}u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\end{vmatrix}$$
+	The determinant follows from the faux determinant used to define the cross product:$$u \cdot (v \times w) = u \cdot \begin{pmatrix}\begin{vmatrix}v_2 & v_3 \\ w_2 & w_3\end{vmatrix}i - \begin{vmatrix}v_1 & v_3 \\ w_1 & w_3\end{vmatrix}j + \begin{vmatrix}v_1 & v_2 \\ w_1 & w_2\end{vmatrix}k\end{pmatrix}$$Which equals$$\begin{vmatrix}v_2 & v_3 \\ w_2 & w_3\end{vmatrix}u_1 - \begin{vmatrix}v_1 & v_3 \\ w_1 & w_3\end{vmatrix}u_2 + \begin{vmatrix}v_1 & v_2 \\ w_1 & w_2\end{vmatrix}u_3$$
+	Which, reversing the cofactor expansion, equals$$\begin{vmatrix}u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3 \\\end{vmatrix}$$
+	From this it follows that$$u \cdot (v \times w) = v \cdot (w \times u) = w \cdot (u \times v)$$
+	Since swapping factors in the product corresponds to swapping rows in the determinant which does not affect the determinant.
+
+- Geometric interpretation of determinants
+	(a) The absolute value of $$\begin{vmatrix}u_1 & u_2 \\ v_1 & v_2\end{vmatrix}$$
+	Is equal to the area of the parallelogram in $2\text{-space}$ determined by the vectors $u = (u_1, u_2)$ and $v = (v_1, v_2)$. This quantity is $||u \times v||$.
+
+	(b) The absolute value of $$\begin{vmatrix}u_1 & u_2 & u_3\\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\end{vmatrix}$$
+	Is equal to the area of the parallelepiped in $3\text{-space}$ determined by the vectors $u = (u_1, u_2, u_3)$, $v = (v_1, v_2, v_3)$ and $w = (w_1, w_2, w_3)$. This quantity is $|u \cdot (v \times w)|$
+
+	*See p197 for proofs*
+
+- Coplanarity of $3$ vectors via the scalar triple product
+	From the previous result, the scalar triple product is the signed volume of the parallelepiped described by three vectors. This volume is $0$ if and only if these vectors are co-planar.
+	
+	Thus, we have$$u \cdot (v \times w) = \begin{vmatrix}u_1 & u_2 & u_3\\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\end{vmatrix} = 0$$
+	Whenever $u$, $v$ and $w$ are coplanar.
