@@ -104,6 +104,17 @@
 
 ## 3.4 - The Geometry of Linear Systems
 
+- Alternate vector equations for lines and planes
+	- Line
+		A general point in a line $L$ can be defined $x = x_0 + tv$ where $v$ is a vector parallel to $L$, $x_0$ is a point along the line and $t$ is a parameter in $[-\infty, \infty]$.
+	- Plane
+		A general point in a plane $P$ can be defined $x = x_0 + t_1v_1 + t_2v_2$, where $v_1$ and $v_2$ are vectors parallel to $P$, $x_0$ is a point in the plane and $t_1$ and $t_2$ are parameters in $[-\infty, \infty]$.
+		
+- Vector equation for a line segment
+	A general point in a line segment can be defined $x = x_0 + t(x_1 - x_0)$, where $x_0$ and $x_1$ are the points at each end of the line segment and $t$ is a parameter in $[0, 1]$.
+	
+- Geometric interpretation of the solution set for a homogeneous linear system
+	A homogeneous system $Ax = 0$ can be expressed as:$$\begin{bmatrix}r_1 \cdot x\\ \vdots \\ r_n \cdot x\end{bmatrix} = \begin{bmatrix}0 \\ \vdots \\ 0\end{bmatrix}$$Where $r_1 \dots r_n$ are the row vectors of $A$. The dot product of each row vector with $x$ is $0$ which shows that the solution set of a homogeneous linear system is the set of all vectors which are orthogonal to every row vector of the coefficient matrix.
 ## 3.5 - Cross Product
 
 The cross product is defined for vectors $u$ and $v$, both $R^3$, as $u \times v$ which is a vector in $R^3$ orthogonal to both $u$ and $v$.$$u \times v = (u_2v_3 - u_3v_2,\ u_3v_1 - u_1v_3,\ u_1v_2 - u_2v_1)$$
