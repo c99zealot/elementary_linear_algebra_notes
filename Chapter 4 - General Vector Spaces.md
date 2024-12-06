@@ -607,40 +607,80 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 
 ## 4.7 - Row Space, Column Space and Null Space
 
-#### Definitions
-If $A$ is an $m \times n$ matrix, then:
-- The subspace of $R^n$ spanned by the row vectors of $A$ is denoted $row(A)$ and is called the ***row space*** of $A$.
-- The subspace of $R^n$ spanned by the column vectors of $A$ is denoted $col(A)$ and is called the ***column space*** of $A$.
-- The subspace of $R^n$ which is the solution space of a homogeneous system $Ax = 0$ is denoted $null(A)$ and is called the ***null space*** of $A$.
+- Matrix subspaces
+	If $A$ is an $m \times n$ matrix, then:
+	- The subspace of $R^n$ spanned by the row vectors of $A$ is denoted $row(A)$ and is called the ***row space*** of $A$.
+	- The subspace of $R^n$ spanned by the column vectors of $A$ is denoted $col(A)$ and is called the ***column space*** of $A$.
+	- The subspace of $R^n$ which is the solution space of a homogeneous system $Ax = 0$ is denoted $null(A)$ and is called the ***null space*** of $A$.
 
-### $Ax = b$ and $col(A)$
+- $Ax = b$ and $col(A)$
+	
+	Suppose that
+	$$
+	\begin{matrix}
+	A = \begin{Bmatrix}
+	a_{11} & a_{12} & \dots & a_{1n} \\
+	a_{21} & a_{22} & \dots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} & a_{m2} & \dots & a_{mn} \\
+	\end{Bmatrix}
+	& and &
+	x = \begin{bmatrix}
+	x_1 \\ x_2 \\ \vdots \\ x_n
+	\end{bmatrix}
+	\end{matrix}
+	$$
+	If $\{c_1,\ \dots,\ c_n\}$ is the set of column vectors of $A$, then the product $Ax$ can be expressed as a linear combination of vectors from $\{c_1,\ \dots,\ c_n\}$:
+	$$
+	Ax = x_1c_1 + x_2c_2 +\ \dots\ + x_nc_n
+	$$
+	Thus the linear system $Ax = b$ can be expressed as
+	$$
+	x_1c_1 + x_2c_2 +\ \dots\ + x_nc_n = b
+	$$
+	Which shows that the system $Ax = b$ is consistent if and only if $b$ can be expressed as a linear combination of the column vectors in $A$.
+	
+	$Ax = b$ is consistent if and only if $b \in col(A)$.
 
-Suppose that
-$$
-\begin{matrix}
-A = \begin{Bmatrix}
-a_{11} & a_{12} & \dots & a_{1n} \\
-a_{21} & a_{22} & \dots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m1} & a_{m2} & \dots & a_{mn} \\
-\end{Bmatrix}
-& and &
-x = \begin{bmatrix}
-x_1 \\ x_2 \\ \vdots \\ x_n
-\end{bmatrix}
-\end{matrix}
-$$
-If $\{c_1,\ \dots,\ c_n\}$ is the set of column vectors of $A$, then the product $Ax$ can be expressed as a linear combination of vectors from $\{c_1,\ \dots,\ c_n\}$:
-$$
-Ax = x_1c_1 + x_2c_2 +\ \dots\ + x_nc_n
-$$
-Thus the linear system $Ax = b$ can be expressed as
-$$
-x_1c_1 + x_2c_2 +\ \dots\ + x_nc_n = b
-$$
-Which shows that the system $Ax = b$ is consistent if and only if $b$ can be expressed as a linear combination of the column vectors in $A$. *(solving for $x$ involves inverting $A$, if $det(A) = 0$ then the combination can't exist)*
+- Relationship between $Ax = 0$ and $Ax = b$
+	Given a linear system $Ax = 0$ with solution$$\begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6\end{bmatrix} = \begin{bmatrix}-3r - 4s - 2t \\ r \\ -2s \\ s \\ t \\ \frac13\end{bmatrix}$$
+	$x$ may be expressed$$r\begin{bmatrix}-3 \\ 1 \\ 0\\0\\0\\0\end{bmatrix} + s\begin{bmatrix}-4 \\ 0 \\ -2 \\ 1 \\0\\0\end{bmatrix} + t\begin{bmatrix}-2 \\0\\0\\0\\1\\0\end{bmatrix} + \begin{bmatrix}0\\0\\0\\0\\0\\\frac13\end{bmatrix}$$
+	$x - \begin{bmatrix}0\\0\\0\\0\\0\\\frac13\end{bmatrix}$ is the form of a general solution to $Ax = b$.
+	
+	As shown previously, the vectors being scaled by $r$, $s$ and $t$ form a basis for the solution space of the *homogeneous* system $Ax = 0$. This demonstrates the general theorem:
+	
+	- If $x_0$ is any solution of a consistent linear system $Ax = b$ and if $S = \{V_1, \dots, v_k\}$ is a basis for the null space of $A$, then every solution of $Ax = b$ can be expressed in the form $$x = x_0 + c_1v_1 + \dots + c_kv_k$$Conversely, for all choices of scalars $c_1, \dots, c_k$, the vector $x$ in the above formula is a solution of $Ax = b$.
+	*Proof on p266*.
 
-And so a system of linear equations $Ax = b$ is consistent if and only if $b \in col(A)$.
+	![[la_image22.png]]
 
-### Relationship between $Ax = 0$ and $Ax = b$
+- Bases for Row, Column and Null spaces
+	- If a given matrix $R$ is in row echelon form then its row vectors which contain leading $1$s form a basis for $row(A)$ and its column vectors which contain the leading $1$s form a basis for $col(A)$.
 
+		For example, given $$R = \begin{bmatrix}1 & -2 & 5 & 0 & 3\\0 & 1 & 3 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0&0&0&0&0\end{bmatrix}$$
+		A basis for $row(R)$ is formed by$$\{(1, -2, 5, 0, 3),\ (0, 1, 3, 0, 0),\ (0, 0, 0, 1, 0)\}$$
+		And a basis for $col(R)$ is formed by$$\{(1, 0, 0, 0),\ (-2, 1, 0, 0),\ (0, 0, 1, 0)\}$$
+
+	- If $A$ and $B$ are row equivalent, $row(A) = row(B)$ and $null(A) = null(B)$
+		***Proof*** Elementary row operations (scalar multiplication & linear combinations) scale and translate the row vectors to other vectors in the space, making $row(B)$ a subspace of $row(A)$ and conversely making $row(A)$ a subspace of $row(B)$, hence $row(A) = row(B)$.
+
+		Elementary row operations on $A$ have no effect on the solution space of $Ax = b$, so the solution spaces of $Ax = 0$ and $Bx = 0$ are equal and thus $null(A) = null(B)$.
+
+	- If $A$ and $B$ are row equivalent:
+		(a) A given set of column vectors of $A$ is linearly independent if and only if the corresponding column vectors of $B$ are linearly independent.
+
+		*which implies*
+
+		(b) A given set of column vectors of $A$ forms a basis for $col(A)$ if and only if the corresponding column vectors of $B$ form a basis for $col(B)$.
+
+	These results lead to strategies for finding bases for $row(A)$ and $col(A)$ comprised of row/col vectors from $A$:
+
+- Basis for $col(A)$
+	Because the corresponding column vectors of row equivalent matrices $A$ and $B$ form bases for $col(A)$ and $col(B)$ (and $col(A) = col(B)$), a basis for $col(A)$ comprised of column vectors from $A$ can be found by bringing $A$ to a row echelon form matrix $R$ and then selecting columns of $A$ which correspond to those in $R$ with leading $1$s.
+	*See p270 for example*
+
+- Basis for $row(A)$
+	A basis for $col(A^T)$ forms a basis for $row(A)$.
+
+- Basis for $span(S)$
+	Construct the matrix $A$ whose column vectors are the vectors in $S$ and find a basis for $col(A)$. This is also a basis for $span(S)$.
