@@ -6,3 +6,13 @@
 	5. $Ax = b$ is consistent for every $n \times 1$ matrix $b$.
 	6. $Ax = b$ has exactly one solution for every $n \times 1$ matrix $b$.
 	7. $det(A) \neq 0$
+	*if there are no duplicates among the rows or columns of $A$, then*
+	9. The column vectors of $A$ are linearly independent.
+	10. The row vectors of $A$ are linearly independent.
+	11. The column vectors of $A$ span $R^n$.
+	12. The row vectors of $A$ form a basis for $R^n$.
+	13. The column vectors of $A$ form a basis for $R^n$.
+	14. $rank(A) = n$.
+	15. $nullity(A) = 0$.
+	16. $null(A)^\perp = R^n$.
+	17. $row(A)^\perp = \{0\}$.

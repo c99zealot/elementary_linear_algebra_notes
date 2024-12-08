@@ -20,11 +20,10 @@
   
 - Lines through the origin are subspaces of $R^2$
 - Planes through the origin are subspaces of $R^3$
-  
+
+## 4.3 - Spanning Sets
 - A _linear combination_ $w$ of a set of vectors $S = \{v_1,\ v_2,\ ...,\ v_n\}$ is a vector in the form:
   $$w = k_1v_1\ +\ k_2v_2\ +\ ...\ +\ k_nv_n$$
-  
-
 - A span $span\{S\}$ of a set of vectors $S$ is the set of all linear combinations of those vectors. $span\{S\}$ is always a subspace of the vector space $V$ to which the vectors in $S$ belong and it is said that the vectors in $S$ span the subspace $span\{S\}$. Note that $span\{S\}$ is not necessarily equal to $V$.
   
 - $span\{S\}$ is the "smallest" subspace containing all vectors in S
@@ -102,7 +101,7 @@ $$
 	Which shows that scaling any vector from $S$	gives a vector also in $S$.
 	With closure under addition and multiplication both shown to hold, it can be concluded that $S$ is a subspace. Since $S$ is a subspace and a solution set it is referred to as a *solution space*.
 	The example is for a solution space of cardinality $\geq 1$ which can be assumed because $S$ contains at least the trivial solution with $x$ being the zero vector.
-## 4.3 - Linear Independence
+## 4.4 - Linear Independence
 - If $S = \{v_1,\ ...,\ v_r\}$ is a nonempty set of vectors in a vector space $V$, then the vector equation $$k_1v_1\ +\ ...\ +\ k_rv_r = 0$$
 	Has at least one solution, namely, $$k_1 = 0,\ ...,\ k_r = 0$$
 	This is called the *trivial solution*. If this is the only solution, then $S$ is said to be a *linearly independent set*. If there are solutions in addition to the trivial solution, then $S$ is said to be a *linearly dependent set*.
@@ -292,7 +291,7 @@ Has a nontrivial solution. This in turn implies that the determinant of that mat
 	= x\ cos\ x - sin\ x
 	$$
 	The Wronskian is not identically zero, $x = \frac\pi2$ gives a result of $\frac\pi2$. Thus, the functions are linearly independent.  
-## 4.4 - Coordinates and basis
+## 4.5 - Coordinates and basis
 #### Examples of coordinate systems
 ![[la_image20.png]]
 ![[la_image19.png]]
@@ -366,7 +365,7 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 - Finding $v$ from $(v)_S$ and $S$
 	Given $(v)_S$ and $S$, a linear combination expressing $v$ can be constructed, e.g. if $(v)_S = (-1,\ 3,\ 2)$, then $v = -v_1 + 3v_2 + 2v_3$. If the basis $S$ is known, then $v_1,\ v_2$ and $v_3$ are known and evaluating this expression is simple.
 
-## 4.5 - Dimension
+## 4.6 - Dimension
 - The dimension of a vector space is the cardinality of its basis.
 	For example, $R^2$ has dimension $2$ and $P_4$, the vector space of polynomials of degree $\leq 4$ has degree $5$ because its standard basis is $\{1,\ x,\ x^2,\ x^3,\ x^4\}$. Additionally, the zero vector space is defined to have dimension $0$.
 	
@@ -461,7 +460,7 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 	*(c)* $W = V \iff dim(W) = dim(V)$ 
 
 
-## 4.6 - Change of Basis
+## 4.7 - Change of Basis
 
 #### Coordinate maps
 \	If $S = \{v_1, ..., v_n\}$ is a basis for a finite-dimensional vector space $V$ and $[v]_S = (c_1,\  ...,\ c_n)$ is the coordinate vector of $v$ relative to $S$, then the mapping
@@ -605,7 +604,7 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 
 - End of 4.7 "An Efficient Method for Computing Transition Matrices between Bases for $R^n$"
 
-## 4.7 - Row Space, Column Space and Null Space
+## 4.8 - Row Space, Column Space and Null Space
 
 - Matrix subspaces
 	If $A$ is an $m \times n$ matrix, then:
@@ -649,7 +648,7 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 	
 	As shown previously, the vectors being scaled by $r$, $s$ and $t$ form a basis for the solution space of the *homogeneous* system $Ax = 0$. This demonstrates the general theorem:
 	
-	- If $x_0$ is any solution of a consistent linear system $Ax = b$ and if $S = \{V_1, \dots, v_k\}$ is a basis for the null space of $A$, then every solution of $Ax = b$ can be expressed in the form $$x = x_0 + c_1v_1 + \dots + c_kv_k$$Conversely, for all choices of scalars $c_1, \dots, c_k$, the vector $x$ in the above formula is a solution of $Ax = b$.
+	- If $x_0$ is any solution of a consistent linear system $Ax = b$ and if $S = \{v_1, \dots, v_k\}$ is a basis for the null space of $A$, then every solution of $Ax = b$ can be expressed in the form $$x = x_0 + c_1v_1 + \dots + c_kv_k$$Conversely, for all choices of scalars $c_1, \dots, c_k$, the vector $x$ in the above formula is a solution of $Ax = b$.
 	*Proof on p266*.
 
 	![[la_image22.png]]
@@ -684,3 +683,87 @@ $$ Is formed by equating corresponding components, solving this system gives $c_
 
 - Basis for $span(S)$
 	Construct the matrix $A$ whose column vectors are the vectors in $S$ and find a basis for $col(A)$. This is also a basis for $span(S)$.
+
+## 4.9 - Rank, Nullity and the Fundamental Matrix Spaces
+
+- $dim(row(A)) = dim(col(A))$
+	***Proof*** $dim(row(A)) = dim(row(R))$ if $R$ and $A$ are row equivalent, the same is true for the column spaces. So it suffices to prove that $dim(row(R)) = dim(col(R))$, this is evident from inspection of a matrix in row echelon form:$$R = \begin{bmatrix}1 & 0 & 4 & 12 & 16 \\ 0 & 0 & 1 & 7 & 4 \\ 0 & 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 0 & 0\end{bmatrix}$$
+	There is a row vector for every leading $1$ and there is a column vector for every leading $1$, so there are an equal number of basis vectors for $row(R)$ and $col(R)$, hence the dimensions are equal.
+
+- $rank(A)$ and $nullity(A)$
+	The dimensionality shared by $row(A)$ and $col(A)$ is called the rank of $A$ and is denoted $rank(A)$.
+
+	$rank(null(A))$ is called the nullity of $A$ and is denoted $nullity(A)$.
+
+	$rank(A)$ and $nullity(A)$ are found by respective methods:
+	1. reducing $A$ to an echelon form to identify basis vectors for $row(A)$ or $col(A)$ by inspection.
+	2. finding the general solution for $Ax = 0$ and expressing it in column vector form to identify the basis vectors.
+
+- Maximum value for $rank(A)$ with $A$ as a $m \times n$ matrix
+	$rank(A) \leq \min(m, n)$
+	since
+	$dim(row(A)) \leq m$,
+	$dim(col(A)) \leq n$
+	and
+	$dim(col(A)) = dim(row(A))$.
+
+- $rank(A) + nullity(A) = n\ \text{ [dimension theorem]}$
+	***Proof*** $A$ has $n$ columns, meaning $Ax = 0$ has $n$ unknowns. The unknowns are categorised as leading and free variables. The number of leading variables is the number of leading $1$s in a row echelon form of $A$ which is also $rank(A)$, so $rank(A) + \text{[free variables]} = n$. The number of free variables is the number of parameters in the general solution and, since each parameter is matched with a basis vector, this is equal to $nullity(A)$. Hence, $rank(A) + nullity(A) = n$.
+
+- If $Ax = b$ is a consistent linear system in $n$ unknowns, then the general solution of the system contains $n - rank(A)$ parameters.
+	***Proof*** $n = rank(A) + nullity(A)$ so the claim is that $nullity(A)$ is the number of parameters in the general solution. This is evident by a previous theorem:
+
+	- If $x_0$ is any solution of a consistent linear system $Ax = b$ and if $S = \{v_1, \dots, v_k\}$ is a basis for the null space of $A$, then every solution of $Ax = b$ can be expressed in the form $$x = x_0 + c_1v_1 + \dots + c_kv_k$$
+	$c_1 \dots c_k$ are the parameters and each is paired with a basis vector for $null(A)$, this means there are $nullity(A)$ of them.
+
+- The Fundamental Spaces of a Matrix
+	- $row(A)$, $col(A)$, $null(A)$ and $row(A^T)$, $col(A^T)$, $null(A^T)$
+	- $row(A^T) = col(A)$ and $col(A^T) = row(A)$ so these aren't considered interesting (sad face).
+
+	- $row(A) \subset R^n$
+	- $null(A) \subset R^n$
+	- $col(A) \subset R^m$
+	- $null(A^T) \subset R^m$
+
+	- $rank(A) = rank(A^T$)
+
+	- Dimensions of the four fundamental subspaces$$\begin{matrix}dim[row(A)] = rank(A) & dim[col(A)] = rank(A) \\ nullity(A) = n - rank(A) & nullity(A^T) = m - rank(A)\end{matrix}$$
+	- Finding bases for the fundamental spaces
+		The basis for $null(A)$ can be found from the general solution to $Ax = 0$.
+		An efficient method for finding bases for the three other spaces is as follows:
+		1. Construct the augmented matrix $[A \mid I]$ where $I$ is the $m \times m$ identity matrix.
+		2. Perform row operations on $[A \mid I]$ to obtain $[R \mid E]$ where $R$ is the reduced row echelon form of $A$ and $E$ is the elementary matrix which transforms $A$ to $R$, in cases where $A$ is invertible $E = A^{-1}$.
+		3. Find the bases for $row(A)$ and $col(A)$ by inspection of $R$.
+		4. Identify the basis for $null(A^T)$ as the bottom $m - rank(A)$ rows of $E$.
+
+		***Proof of 4.***
+		$null(A^T)$ is the solution space for $A^Tx = 0$ which can be written $x^TA = 0^T$.
+		The aforementioned matrices $A$, $R$ and $E$ are related by the equation$$EA = R$$
+		Since $A$ has rank $r$ and size $m \times n$, the matrix $R$ has $rank(A)$ nonzero rows and $m - rank(A)$ zero rows. By (9) in Section 1.3 of The Book:$$\text{[$i^{th}$ row vector of $E$]}A = \text{[$i^{th}$ row vector of $R$]}$$
+		Since the last $m - r$ row vectors of $R$ are zero, the last $m - r$ row vectors of $E$ are solutions to $x^TA = 0^T$ and hence lie in $null(A^T)$.
+ 
+	
+	- Geometric link between spaces
+		- If $W$ is a subspace of $R^n$, then the set of all vectors in $R^n$ which are orthogonal to every vector in $W$ is called the ***orthogonal complement*** of $W$ and is denoted $W^\perp$.
+			- $W \subset R^n$
+			- $(W^\perp)^\perp = W$
+			- $W \cap W^\perp = \{0\}$
+		- If $L$ is a line through the origin then $L^\perp$ is the line perpendicular to $L$.
+		- If $P$ is a plane through the origin then $P^\perp$ is the line containing the normal vector for $P$.
+		 
+		 $P^\perp$ isn't an orthogonal plane to $P$ because then their intersection would be a line and every vector in the line would be orthogonal to itself which is absurd since $(a, b) \cdot (a, b) \neq 0$ for $a, b \neq 0$.
+
+		- $row(A) = null(A)^\perp,\ row(A) \subset R^n$
+			If a vector is orthogonal to every vector in a basis then it is orthogonal to every linear combination of vectors in the basis.
+			
+			$null(A)$ is the set of all vectors $x$ for which $r \cdot x = 0$, hence all the vectors in $null(A)$ are orthogonal to all the vectors in $row(A)$, making $row(A)$ the orthogonal complement of $null(A)$.
+		- $col(A) = null(A^T)^\perp,\ col(A) \subset R^m$
+			By the last theorem, $row(A^T)$ is the orthogonal complement of $null(A^T)$, $row(A^T) = col(A)$, so $col(A) = null(A^T)^\perp$.
+
+## 4.95 OPTIONAL: Overdetermined and Underdetermined Systems
+
+- If $A$ is an $m \times n$ matrix then
+	- If $m > n$, then the linear system $Ax = b$ is inconsistent for at least one vector $b$ in $R^n$ and the system is called ***Overdetermined***.
+	- If $n > m$, then for each vector $b$ in $R^m$ the linear system $Ax = b$ is either inconsistent or has infinitely many solutions. The system is called ***Underdetermined***.
+	*See proofs on p285*
+
