@@ -16,3 +16,4 @@
 	15. $nullity(A) = 0$.
 	16. $null(A)^\perp = R^n$.
 	17. $row(A)^\perp = \{0\}$.
+	18. $\lambda = 0$ is not an eigenvalue of $A$.
