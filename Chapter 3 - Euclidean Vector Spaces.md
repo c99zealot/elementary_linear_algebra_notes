@@ -11,8 +11,8 @@
 	From which it follows that$$\cos \theta = \frac{u \cdot v}{||u|| \ ||v||}$$
 	Using this definition for $\cos\theta$ and the fact that $0 \leq \theta \leq \frac\pi2$, information about $\theta$ can be obtained by computing $u \cdot v$:
 	- $u \cdot v = 0 \implies \cos\theta = 0 \implies \theta = \frac\pi2$
-	- $u \cdot v < 0 \implies \cos\theta < 0 \implies \theta < \frac\pi2$
-	- $u \cdot v > 0 \implies \cos\theta > 0 \implies \theta > \frac\pi2$
+	- $u \cdot v < 0 \implies \cos\theta < 0 \implies \theta > \frac\pi2$
+	- $u \cdot v > 0 \implies \cos\theta > 0 \implies \theta < \frac\pi2$
 
 - Component form of $v \cdot u$
 	Alternatively, $v \cdot u$ can be computed as $$v_1u_1 + \dots + v_nu_n$$*See derivation on p163*
@@ -39,17 +39,30 @@
 - Two nonzero vectors are said to be ***orthogonal*** or perpendicular if $u \cdot v = 0$
 
 - Vector equation for lines and planes
-	Lines and planes can be defined using two vectors; a line is the set of all points orthogonal to a vector, $n$, called the ***normal vector***. If the tail of $n$ is $P_0$, then the equation $n \cdot \overrightarrow{P_0P} = 0$, where $P$ is an arbitrary 2D vector, describes all the points on the line. If $P$ is a 3D vector then it describes a plane.
+	Lines and planes can be defined using two vectors; a line is the set of all points in $R^2$ orthogonal to a vector, $n$, called the ***normal vector***. If the tail of $n$ is $P_0$, then the equation $n \cdot \overrightarrow{P_0P} = 0$, where $P$ is an arbitrary 2D vector, describes all the points on the line. If $\overrightarrow{P_0P}$ and $n$ are in $R^3$ then it describes a plane.
 
 	With $\overrightarrow{P_0P} = (x - x_0, y - y_0)$ and $n = (a,\ b)$ : $$(x - x_0, y - y_0) \cdot (a, b) = a(x - x_0) + b(y - y_0) = 0$$
-	If $P$, $P_0$, $n$ are 3D vectors then $$a(x - x_0) + b(y - y_0) + c(z - z_0) = 0$$
+	If $P$, $P_0$ and $n$ are in $R^3$ then $$a(x - x_0) + b(y - y_0) + c(z - z_0) = 0$$
 	These are the ***point-normal*** forms for equations describing lines and planes. Point-normal forms expand and simplify to the familiar homogeneous forms $ax + by + c = 0$ and $ax + by + cz + d = 0$.
 
 - Orthogonal projections
 	If $u$ and $a \neq 0$ are vectors in $R^n$, then $u$ is uniquely expressed as $w_1 + w_2$ where $w_1$ is a scalar multiple of $a$ and $w_2$ is orthogonal to $a$.
-	*See p176 for proof*
+	***Proof***
+	We have $w_1 = ka$, so $u = ka + w_2$
+	$u \cdot a = (ka + w_2) \cdot a$
+	$= ka \cdot a + w_2 \cdot a$
+	$= k||a||^2 + w_2 \cdot a$
+	
+	$w_2 \cdot a = 0 \implies u \cdot a = k||a||^2 \implies k = \frac{u \cdot a}{||a||^2}$
 
-	This implies every vector is expressible as a sum of orthogonal vectors, expressing $u$ as $w_1 + w_2$ is called ***decomposing*** it into $w_1$ and $w_2$.
+	Then $w_1 = \frac{u \cdot a}{||a||^2}a$ and $w_2 = u - \frac{u \cdot a}{||a||^2}a$
+	
+	$w_2 \cdot a = u \cdot a - \frac{u \cdot a}{||a||^2}a \cdot a$
+	$= u \cdot a - \frac{u \cdot a}{||a||^2}||a||^2 = u \cdot a - u \cdot a = 0$
+	
+	Hence, there exists a scalar $k$ such that, for any two vectors $u$ and $a$, $u$ is uniquely expressed as $ka + w_2$ where $w_2$ is orthogonal to $a$.
+
+	Simply stated, every vector is expressible as a sum of orthogonal vectors. Expressing $u$ as $w_1 + w_2$ is called ***decomposing*** it into $w_1$ and $w_2$.
 
 	$w_1$ and $w_2$ are called **vector components** of $u$ and $w_1$ is the vector component *along* $a$ while $w_2$ is the vector component *orthogonal* to $a$. $w_1$ is also referred to as the ***projection of $u$ along $a$*** and is denoted $\text{proj}_au$.
 	
@@ -66,12 +79,12 @@
 	This matrix is commonly denoted $P_\theta$ and alternatively written as:$$\begin{Bmatrix} \cos^2\theta & \frac12\sin2\theta \\ \frac12\sin2\theta & \sin^2\theta\end{Bmatrix}$$
 
 - Reflections about lines through the origin
-	$H_\theta : R^2 \rightarrow R^2$ mapping each point in $R^2$ to its reflection about a line $L$ through the origin making an angle of $\theta$ with the positive $x\text{-axis}$ can be derived as $P_\theta$ was or alternatively derived from $P_\theta$ :
+	$H_\theta : R^2 \rightarrow R^2$, the mapping between each point in $R^2$ and its reflection about a line $L$ through the origin making an angle of $\theta$ with the positive $x\text{-axis}$ can be derived as $P_\theta$ was or alternatively derived from $P_\theta$ :
 
 	It can be observed from the below figure...
 	![[Pasted image 20241130201135.png]]
-	...that $\forall x \ P_\theta x - x = \frac12(H_\theta x - x)$
-	Equivalently, $H_\theta = (2P_\theta - I)x$, which shows that $H_\theta = 2P_\theta - I$.
+	...that $P_\theta x - x = \frac12(H_\theta x - x)$
+	Equivalently, $H_\theta x = (2P_\theta - I)x$, which shows that $H_\theta = 2P_\theta - I$.g
 
 	From the definition of $P_\theta$ :$$H_\theta = \begin{Bmatrix}\cos2\theta & \sin2\theta \\ \sin2\theta & -\cos2\theta\end{Bmatrix}$$
 
