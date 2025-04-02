@@ -15,8 +15,43 @@
 	- $u \cdot v > 0 \implies \cos\theta > 0 \implies \theta < \frac\pi2$
 
 - Component form of $v \cdot u$
-	Alternatively, $v \cdot u$ can be computed as $$v_1u_1 + \dots + v_nu_n$$*See derivation on p163*
+	Alternatively, $v \cdot u$ can be computed as $$v_1u_1 + \dots + v_nu_n$$*See derivation from law of cosines on p163*
 
+	***Proof***
+	$u \cdot v = ||u|| \hat u \cdot ||v|| \hat v$ *(hat means normalised)*
+	$= ||u||\ ||v||\ \hat u \cdot \hat v$
+
+	By the definition of the dot product, $\hat u \cdot \hat v$ must equal $\cos\theta$ for the two expressions to be equal.
+	So we must prove that the dot product of two unit vectors is the cosine of the angle between them.
+
+	Let $a$ and $b$ be unit vectors and let $p = \text{proj}_b(a)$, $c = a - p$, $d = b - a$.
+	![[BwIE3.png]]
+
+	$||p||^2 = ||a||^2 - ||c||^2$
+	$= 1 - ||c||^2$
+
+	$||c||^2 = ||d||^2 - (||b|| - ||p||)^2$
+	$= ||d||^2 - (1 - ||p||)^2$
+	$= ||d||^2 - 1 + 2||p|| - ||p||^2$
+
+	$\implies ||p||^2 = 1 - ||d||^2 - 1 + 2||p|| - ||p||^2$
+	$\implies 2||p|| = 2 - ||d||^2$
+
+	$d = b - a \implies d_i = b_i - a_i$
+
+	$||d||^2 = d \cdot d = \sum^id_i^2$
+	$= \sum^i(b_i - a_i)^2$
+	$= \sum^i{b_i^2} - 2b_ia_i + a_i^2$
+	$= \sum^i{b_i^2} - \sum^i{2b_ia_i} + \sum^i{a_i^2}$ 
+	$= ||b||^2 - \sum^i{2b_ia_i} + ||a||^2$
+	$= 1 - \sum^i{2b_ia_i} + 1$
+	$= 2 - 2\sum^i{b_ia_i}$
+
+	$2||p|| = 2 - ||d||^2$
+	$= 2 - (2 - 2\sum^i{b_ia_i})$
+	$= 2\sum^i{b_ia_i}$
+	$\implies ||p|| = \sum^i{b_ia_i}$
+	$\blacksquare$
 - Cauchy-Schwarz Inequality
 	$$|u \cdot v| \leq ||u||\ ||v||$$
 	This implies$$-1 \leq \frac{u \cdot v}{||u||\ ||v||} \leq 1$$
